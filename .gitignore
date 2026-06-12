@@ -1,0 +1,183 @@
+# ──────────────────────────────────────────────
+# System — macOS
+# ──────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ──────────────────────────────────────────────
+# System — Windows
+# ──────────────────────────────────────────────
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# ──────────────────────────────────────────────
+# System — Linux
+# ──────────────────────────────────────────────
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ──────────────────────────────────────────────
+# Android / Gradle
+# ──────────────────────────────────────────────
+.gradle/
+build/
+local.properties
+captures/
+*.hprof
+lint/
+.lint/
+
+# Generated source files
+app/src/main/java/**/BuildConfig.java
+app/src/main/java/**/R.java
+
+# NDK / CMake
+.cxx/
+*.so
+*.o
+*.a
+obj/
+
+# Android Studio — Profiler
+*.trace
+
+# ──────────────────────────────────────────────
+# IDE — JetBrains / Android Studio
+# ──────────────────────────────────────────────
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+atlassian-ide-plugin.xml
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# ──────────────────────────────────────────────
+# IDE — VS Code
+# ──────────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ──────────────────────────────────────────────
+# IDE — Cursor
+# ──────────────────────────────────────────────
+.cursor/
+
+# ──────────────────────────────────────────────
+# Dev tools — oh-my-claudecode / Claude Code
+# ──────────────────────────────────────────────
+.omc/
+.claude/
+
+# ──────────────────────────────────────────────
+# JVM / Kotlin / Java
+# ──────────────────────────────────────────────
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+
+# ──────────────────────────────────────────────
+# Secrets — signing & keys (절대 커밋 금지)
+# ──────────────────────────────────────────────
+*.jks
+*.keystore
+*.p12
+*.pem
+AuthKey_*.p8
+google-services.json
+play-store-key.json
+*.mobileprovision
+*.provisionprofile
+
+# ──────────────────────────────────────────────
+# Secrets — env / config
+# ──────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ──────────────────────────────────────────────
+# Fastlane
+# ──────────────────────────────────────────────
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+fastlane/README.md
+
+# ──────────────────────────────────────────────
+# Ruby (Fastlane 의존)
+# ──────────────────────────────────────────────
+.bundle/
+vendor/bundle/
+
+# ──────────────────────────────────────────────
+# Node.js (빌드 툴링용)
+# ──────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ──────────────────────────────────────────────
+# Models — whisper.cpp (동적 다운로드, 번들 미포함)
+# ──────────────────────────────────────────────
+app/src/main/assets/models/
+**/models/*.bin
+**/models/*.gguf
+
+# ──────────────────────────────────────────────
+# Test outputs
+# ──────────────────────────────────────────────
+test-results/
+test/impl/*/logs/
+
+# ──────────────────────────────────────────────
+# Misc
+# ──────────────────────────────────────────────
+*.log
+*.bak
+*.tmp
+*.swp
+*.swo
+.editorconfig.bak
+
+# whisper.cpp sources (fetched via scripts/setup_whisper.sh, MIT, not committed)
+app/src/main/cpp/whisper/

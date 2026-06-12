@@ -1,0 +1,8 @@
+// as-it-sounds-android — root build (정적 템플릿 / static scaffold)
+plugins {
+    id("com.android.application") version "8.13.2" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.0" apply false
+    id("com.google.devtools.ksp") version "2.1.0-1.0.29" apply false
+    id("com.google.dagger.hilt.android") version "2.53" apply false
+}

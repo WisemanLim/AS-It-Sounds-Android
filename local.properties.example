@@ -1,0 +1,19 @@
+# local.properties.example — Android 로컬 개발 설정 템플릿
+# 복사 후 local.properties 로 이름 변경. 절대 커밋 금지.
+#
+# Android Studio 가 자동 생성하는 sdk.dir 외에
+# API 키·서명 정보를 여기에 관리한다.
+
+## Android SDK 경로 (Android Studio 자동 생성)
+# sdk.dir=/Users/<name>/Library/Android/sdk
+
+## 번역 API 키 (EncryptedSharedPreferences 주입용)
+# MYMMORY_API_KEY=
+# DEEPL_API_KEY=
+# LIBRETRANSLATE_URL=
+
+## 서명 (릴리스 빌드 로컬 테스트용 — CI 는 KEYSTORE_BASE64 등 시크릿 사용)
+# KEYSTORE_FILE=../keystore/upload.jks
+# KEYSTORE_PASSWORD=
+# KEY_ALIAS=
+# KEY_PASSWORD=

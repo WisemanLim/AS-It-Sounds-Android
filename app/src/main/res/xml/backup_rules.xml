@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android Auto Backup → Google Drive (F-15, ≤ API 30).
+  Only the project DB, settings, and imported media are backed up.
+  Models (noBackupFilesDir, re-downloadable) and encrypted API keys are NOT
+  included here, so they never leave the device — no <exclude> needed.
+-->
+<full-backup-content>
+    <include domain="database" path="as_it_sounds.db" />
+    <include domain="file" path="datastore/" />
+    <include domain="file" path="imports/" />
+</full-backup-content>

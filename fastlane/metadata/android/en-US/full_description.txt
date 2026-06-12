@@ -1,0 +1,11 @@
+As It Sounds transcribes audio and video entirely on your device — no cloud upload, full privacy, works in airplane mode.
+
+• On-device speech recognition (whisper.cpp), 6+ languages
+• Korean phonetic transliteration shown alongside the original
+• On-device Korean translation (ML Kit), or MyMemory / LibreTranslate / DeepL
+• 3-line segment view: original / Hangul pronunciation / Korean translation
+• Tap a segment to seek, A-B repeat, 0.5–2× speed, ±5s
+• Export SRT / VTT / TXT
+• Import via file picker, photo picker, or share sheet
+
+All processing happens on-device. No data is collected or shared.

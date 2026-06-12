@@ -1,0 +1,4 @@
+# as-it-sounds-android — Fastlane Appfile
+# PLAY_STORE_JSON_KEY: CI 시크릿으로 주입 (절대 커밋 금지)
+json_key_file(ENV["PLAY_STORE_JSON_KEY"] || "")
+package_name("com.asitsounds.android")

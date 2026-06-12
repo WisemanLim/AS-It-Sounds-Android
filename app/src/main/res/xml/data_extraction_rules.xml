@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Backup + device-transfer rules (F-15, API 31+).
+  cloud-backup = Google Drive Auto Backup. device-transfer = direct phone→phone.
+  Only DB, settings, and imported media are included; models (noBackupFilesDir)
+  and encrypted API keys are excluded simply by not being listed.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="database" path="as_it_sounds.db" />
+        <include domain="file" path="datastore/" />
+        <include domain="file" path="imports/" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="database" path="as_it_sounds.db" />
+        <include domain="file" path="datastore/" />
+        <include domain="file" path="imports/" />
+    </device-transfer>
+</data-extraction-rules>
