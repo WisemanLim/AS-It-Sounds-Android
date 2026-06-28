@@ -27,6 +27,21 @@ enum class WhisperModel(
         sha256 = "1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b",
         sizeBytes = 466_000_000L,
         minRamBytes = 6L * 1024 * 1024 * 1024
+    ),
+    MEDIUM(
+        id = "medium",
+        filename = "ggml-medium.bin",
+        sha256 = "fd9727b6d1c8e1bde76a132eb7e4b47838c8dfee1e4869bf5c9765e02c0cb87c",
+        sizeBytes = 1_534_000_000L,
+        minRamBytes = 8L * 1024 * 1024 * 1024
+    ),
+    // 추천: large-v3 대비 6× 빠름, 품질 동급 (ggerganov/whisper.cpp)
+    LARGE_V3_TURBO(
+        id = "large-v3-turbo",
+        filename = "ggml-large-v3-turbo.bin",
+        sha256 = "4af6b50bbf3f00f40f0a49cdffedc00e7bd66eda5bf27ade0b8bccc9f0e1c26c",
+        sizeBytes = 809_000_000L,
+        minRamBytes = 6L * 1024 * 1024 * 1024
     );
 
     companion object {

@@ -35,4 +35,19 @@ class ProjectRepository @Inject constructor(
     suspend fun addSegments(segments: List<SegmentEntity>) = segmentDao.insertAll(segments)
 
     suspend fun lastSegmentIndex(fileId: Long): Int? = segmentDao.lastIndex(fileId)
+
+    suspend fun getFirstFileForProject(projectId: Long): MediaFileEntity? =
+        mediaFileDao.getFirstForProject(projectId)
+
+    suspend fun clearSegmentsForFile(fileId: Long) = segmentDao.deleteForFile(fileId)
+
+    suspend fun updateFileStatus(fileId: Long, status: ProjectStatus, error: String? = null) {
+        val file = mediaFileDao.getById(fileId) ?: return
+        mediaFileDao.update(file.copy(status = status, error = error))
+    }
+
+    suspend fun updateProjectStatus(projectId: Long, status: ProjectStatus) {
+        val project = projectDao.getById(projectId) ?: return
+        projectDao.update(project.copy(status = status, updatedAt = System.currentTimeMillis()))
+    }
 }

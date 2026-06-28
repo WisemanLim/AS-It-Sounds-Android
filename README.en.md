@@ -125,6 +125,9 @@ All epics (E0–E9) implemented. Unit tests **208/208 PASS**, `assembleDevDebug`
 | E7 | Persistence/Export | ✅ Done | 19 (SubtitleExporter·Converters, Room KSP) |
 | E8 | Platform integration | ✅ Done | 20 (RollingBuffer·Notification·Shortcuts) |
 | E9 | Polish/Deploy | ✅ Done | 4 (Accessibility) + i18n·Play listing |
+| F1 | **Transcription progress** | ✅ Done | `TranslationProgress` PipelineEvent + `LibraryScreen` progress indicator |
+| F2 | **Retry / resume** | ✅ Done | `LibraryViewModel.retryProject()` + "Resume" button, WorkManager checkpoint resume |
+| F3 | **Higher-quality models** | ✅ Done | `MEDIUM` (1.5 GB) + `LARGE_V3_TURBO` (809 MB), RAM guard |
 
 UI polish & verification happened in iterations 10–14 (real whisper.cpp build, instrumentation,
 onboarding/settings iOS parity, icon pass, release lint). Evidence: `test/impl/<N>/` (1–14).

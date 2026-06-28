@@ -28,6 +28,7 @@ class PipelineOrchestrator(
         emit(PipelineEvent.AsrProgress(100))
 
         val startIdx = loadCheckpoint(fileId)
+        val total = rawSegments.size
 
         rawSegments.forEachIndexed { idx, seg ->
             if (idx < startIdx) return@forEachIndexed
@@ -51,6 +52,8 @@ class PipelineOrchestrator(
                     lang       = seg.lang
                 )
             )
+            val pct = if (total > 0) ((idx + 1) * 100 / total) else 100
+            emit(PipelineEvent.TranslationProgress(pct, idx + 1, total))
             saveCheckpoint(fileId, idx + 1)
         }
 

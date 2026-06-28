@@ -7,9 +7,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.asitsounds.android.core.data.db.ProjectStatus
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -46,7 +48,23 @@ fun LibraryScreen(
                     Card(onClick = { onOpenProject(project.id) }, modifier = Modifier.fillMaxWidth()) {
                         ListItem(
                             headlineContent = { Text(project.name) },
-                            supportingContent = { Text(project.status.name) }
+                            supportingContent = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(project.status.name)
+                                    if (project.status == ProjectStatus.PROCESSING) {
+                                        Spacer(Modifier.width(8.dp))
+                                        LinearProgressIndicator(modifier = Modifier.weight(1f))
+                                    }
+                                }
+                            },
+                            trailingContent = {
+                                if (project.status == ProjectStatus.ERROR ||
+                                    project.status == ProjectStatus.PROCESSING) {
+                                    TextButton(onClick = { viewModel.retryProject(project) }) {
+                                        Text("재개")
+                                    }
+                                }
+                            }
                         )
                     }
                 }

@@ -4,13 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.asitsounds.android.core.data.ProjectRepository
 import com.asitsounds.android.core.data.db.ProjectEntity
+import com.asitsounds.android.core.data.db.ProjectStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LibraryViewModel @Inject constructor(
-    repository: ProjectRepository
+    private val repository: ProjectRepository
 ) : ViewModel() {
 
     private val query = MutableStateFlow("")
@@ -26,4 +28,13 @@ class LibraryViewModel @Inject constructor(
 
     fun setQuery(value: String) { query.value = value }
     fun setFilter(value: StatusFilter) { statusFilter.value = value }
+
+    fun retryProject(project: ProjectEntity) {
+        viewModelScope.launch {
+            val file = repository.getFirstFileForProject(project.id) ?: return@launch
+            repository.clearSegmentsForFile(file.id)
+            repository.updateFileStatus(file.id, ProjectStatus.PENDING, null)
+            repository.updateProjectStatus(project.id, ProjectStatus.PENDING)
+        }
+    }
 }

@@ -180,6 +180,9 @@ CI Repository Secrets 등록 목록:
 | E7 | 영속/내보내기 | ✅ 완료 | 19 (SubtitleExporter·Converters, Room KSP) |
 | E8 | 플랫폼 통합 | ✅ 완료 | 20 (RollingBuffer·Notification·Shortcuts) |
 | E9 | 완성도/배포 | ✅ 완료 | 4 (Accessibility) + i18n·Play 리스팅 |
+| F1 | **전사 진행률 표시** | ✅ 완료 | `TranslationProgress` PipelineEvent + `LibraryScreen` 인디케이터 |
+| F2 | **재시도/재개** | ✅ 완료 | `LibraryViewModel.retryProject()` + "재개" 버튼, WorkManager 체크포인트 이어쓰기 |
+| F3 | **고품질 모델** | ✅ 완료 | `MEDIUM`(1.5GB) + `LARGE_V3_TURBO`(809MB), RAM 가드 |
 
 UI 보강·검증은 10~14차에서 진행(실제 whisper.cpp 빌드, 계측시험, 온보딩/설정 iOS 패리티,
 아이콘화, 릴리스 lint). 상세: `test/impl/<N>/scenario.md` + `result.md` (1~14차).

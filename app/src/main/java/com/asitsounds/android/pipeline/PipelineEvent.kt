@@ -5,6 +5,7 @@ sealed class PipelineEvent {
     data object Decoding : PipelineEvent()
     data class AsrProgress(val progressPct: Int) : PipelineEvent()
     data class TranslatingSegment(val segmentIndex: Int) : PipelineEvent()
+    data class TranslationProgress(val progressPct: Int, val segmentIndex: Int, val total: Int) : PipelineEvent()
     data class Segment(
         val index: Int,
         val startMs: Long,

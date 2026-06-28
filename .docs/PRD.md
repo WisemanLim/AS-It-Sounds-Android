@@ -67,7 +67,7 @@ iOS 앱(F-1~F-21) 과 **완전 기능 패리티**를 목표로 한다. 단, iOS 
 | F-8 | 미디어 재생/시크 | P0 | ⬜ | **ExoPlayer(Media3)**. 세그먼트 탭=seek, 0.5~2× 속도, ±5초, A-B 구간반복. |
 | F-9 | 로컬 영속 | P0 | ✅ | **Room**, 3테이블(Project/MediaFile/Segment) FK 캐스케이드. iOS 스키마 1:1. |
 | F-10 | 설정 | P0 | ✅ | 모델 선택/다운로드, 번역엔진, 다크모드(시스템/라이트/다크 `DataStore` 영속), 기본속도, 자동재생, 라이선스. |
-| F-11 | 모델 매니저 | P0 | ✅ | whisper.cpp 모델 다운로드(progress) + SHA 검증 + `WorkManager` 백그라운드. tiny/base/small 3종. |
+| F-11 | 모델 매니저 | P0 | ✅ | whisper.cpp 모델 다운로드(progress) + SHA 검증 + `WorkManager` 백그라운드. tiny/base/small/medium(1.5GB)/large-v3-turbo(809MB) 5종. RAM 가드(MEDIUM≥8GB·LARGE_V3_TURBO≥6GB). |
 | F-12 | 공유받기 (Intent) | P1 | ✅ | 외부앱 공유→As It Sounds. `ACTION_SEND` Intent filter, 미디어 URI → 새 프로젝트 자동 생성. |
 | F-13 | 자막 내보내기 | P1 | ✅ | SRT / VTT / TXT (`ActivityResultContracts.CreateDocument`). |
 | F-14 | 백그라운드 처리 | P1 | ✅ | `WorkManager CoroutineWorker`(id `com.asitsounds.android.transcribe`) + 세그먼트 checkpoint 이어쓰기. |
@@ -78,6 +78,8 @@ iOS 앱(F-1~F-21) 과 **완전 기능 패리티**를 목표로 한다. 단, iOS 
 | F-19 | 완성도 | P1 | ✅ | i18n(strings.xml en+ko), 다크모드 3모드(`DynamicTheme`), 앱아이콘(adaptive icon). TalkBack·폰트 크기 접근성. |
 | F-20 | 온보딩 인트로 가이드 | P1 | ✅ | 4장 인트로 ViewPager2(Compose Pager): 앱 소개 · 전사/음차/번역 · 파일/재생 · 온디바이스. `DataStore.isFirstLaunch` 연동. |
 | F-21 | Play Store 제출 준비 | P1 | ✅ | Play Store 스토어 리스팅(한/영), `privacy_policy`, 타깃 연령, 권한 최소화 선언. |
+| F-22 | 전사 진행률 표시 | P1 | ✅ | `PipelineEvent.TranslationProgress(progressPct, segmentIndex, total)` + `PipelineOrchestrator` 루프 내 emit. `LibraryScreen` 카드에 `LinearProgressIndicator` + 처리중 상태 실시간 표시. |
+| F-23 | 재시도/재개 | P1 | ✅ | `LibraryViewModel.retryProject()`: 세그먼트 삭제 + 상태 PENDING 재설정. `LibraryScreen` "재개" `TextButton` (ERROR·PROCESSING 상태). WorkManager 체크포인트 이어쓰기 기존 인프라 활용. |
 
 ### Out of Scope
 
@@ -278,6 +280,7 @@ MediaFile → MediaExtractor+MediaCodec(16kHz mono Float32)
 | 12차 | 2026-06-12 | 설정 iOS 패리티 — 화면모드 셀렉트박스(드롭다운) + 접근성/앱 정보/오픈소스 라이선스 서브화면 신규 + 동기화(Google Drive)·라벨 정렬 + Column verticalScroll 스크롤 수정. 에뮬레이터 전 항목 동작검증. | **PASS** |
 | 13차 | 2026-06-12 | 아이콘화 — 뒤로가기 텍스트/화살표를 Material `ArrowBack` 아이콘으로 통일 + 기본속도 −/+ → Remove/Add 아이콘 + 모델 다운로드 텍스트 → Download/CloudDone 아이콘. | **PASS** |
 | 14차 | 2026-06-12 | 릴리스 lint 수정 — backup_rules/data_extraction_rules 의 `<exclude>`(models·키)가 include 경로 밖이라 FullBackupContent 6 errors. include 미등재만으로 제외되므로 exclude 제거. `lintVitalProdRelease` 통과. | **PASS** |
+| 15차 | 2026-06-28 | F1~F3 UX/품질 향상 — (F3) `WhisperModel.kt` MEDIUM(1.5GB)/LARGE_V3_TURBO(809MB) 추가·RAM 가드. (F1) `PipelineEvent.TranslationProgress` + `PipelineOrchestrator` per-segment emit + `LibraryScreen` 진행률 인디케이터. (F2) `ProjectRepository` getFirstFileForProject/clearSegmentsForFile/updateFileStatus/updateProjectStatus + `LibraryViewModel.retryProject()` + `LibraryScreen` 재개 버튼. | **PASS** |
 
 ### 잔여 (Remaining)
 

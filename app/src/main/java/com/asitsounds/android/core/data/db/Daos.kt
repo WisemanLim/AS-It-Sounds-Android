@@ -29,6 +29,9 @@ interface MediaFileDao {
 
     @Query("SELECT * FROM media_files WHERE id = :id")
     suspend fun getById(id: Long): MediaFileEntity?
+
+    @Query("SELECT * FROM media_files WHERE projectId = :projectId ORDER BY id ASC LIMIT 1")
+    suspend fun getFirstForProject(projectId: Long): MediaFileEntity?
 }
 
 @Dao
@@ -44,4 +47,7 @@ interface SegmentDao {
 
     @Query("SELECT MAX(idx) FROM segments WHERE fileId = :fileId")
     suspend fun lastIndex(fileId: Long): Int?
+
+    @Query("DELETE FROM segments WHERE fileId = :fileId")
+    suspend fun deleteForFile(fileId: Long)
 }
